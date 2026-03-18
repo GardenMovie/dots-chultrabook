@@ -5,10 +5,12 @@ set $mod Mod4
 font pango:GeistMono:SemiBold 8
 
 ### AUTOSTART
+exec --no-startup-id syncthing
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id picom
 
 ### Brightness
 
@@ -18,6 +20,7 @@ bindsym XF86MonBrightnessDown  exec --no-startup-id brightnessctl -e set 10%-
 ### App Binds
 
 bindsym $mod+b exec firefox
+bindsym $mod+i exec kitty -e impala
 bindsym $mod+e exec nautilus
 bindsym $mod+c exec code
 bindsym $mod+n exec obsidian
@@ -116,6 +119,7 @@ bindsym $mod+alt+Right resize grow width 10 px or 10 ppt
 
 ### MISC
 default_border pixel 1
+for_window [class=".*"] title_format "%class"
 title_align center
 
 # class                 border  backgr. text    indicator child_border
